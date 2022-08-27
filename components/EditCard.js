@@ -194,7 +194,7 @@ export default function EditCard() {
             )}
             {storeEditPanel.keySwitch === 3 && (
               <div className="flex flex-col justify-center items-center text-lg font-medium text-gray-700 break-words">
-                <p>Deleting a card can't be undone.</p>
+                <p>Deleting a card can not be undone.</p>
                 <p>Are you sure?</p>
               </div>
             )}
