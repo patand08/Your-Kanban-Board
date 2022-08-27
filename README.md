@@ -2,7 +2,7 @@
 
 ###### Next.js, Tailwindcss, Zustand, react-beautiful-dnd
 
-**Vercel:** (link)
+**Vercel:** https://your-kanban-board-53zssmkcx-patrux08.vercel.app/
 
 ## The challenge
 
