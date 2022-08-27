@@ -1,34 +1,40 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Your Kanban Board
 
-## Getting Started
+###### Next.js, Tailwindcss, Zustand, react-beautiful-dnd
 
-First, run the development server:
+**Vercel:** (link)
 
-```bash
-npm run dev
-# or
-yarn dev
+## The challenge
+
+```
+- Create a responsive page containing a board that handles multiple
+cards and multiple statuses.
+- We should be able to:
+- Drag&drop the cards between the statuses.
+- Filter the cards.
+- Search the cards.
+- Inline card edition.
+- Add new cards.
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## The approach
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+The code simulates (fetchMockData.js) a DB that holds all kanban cards.
+It's assumed that the "DB" have only one table, in which the status of the task (doing, done, backlog...) is defined by a field **"stats"**.
+I also assumed that no card should be truly deleted. Deleted cards are marked as "_delete_" and are not fetched by the app.
+Other fields include: Id, content and priority.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+The whole app is a single page application that fetches the data, display the cards and allows you to drag, create, edit and delete cards.
+You can move cards around by dragging them, or use the edit menu to change its status, content or priority.
+The deletion is also made via edit menu.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+###### Filters
 
-## Learn More
+**Search bar** dynamically show cards that contain the inputted text.
+The **switches** allows to set which priority flags are displayed. The colors match with the priority tags colors.
 
-To learn more about Next.js, take a look at the following resources:
+###### Oopsies
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This is my first time using a Drag & Drop React lib. What made it even harder was finding out they are not optimized to work with Next.js.
+A warning will always be displayed on the console, I tried many approaches to fix it, but the non-optimization was hard to beat and was taking too much of my time.
+Trying to move cards while filtering may cause some bugs in the react-beautiful-dnd functions. The data is not affected, as it can still be edited via edit panel.
